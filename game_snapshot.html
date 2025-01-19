@@ -1,0 +1,111 @@
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Game Snapshot</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 20px;
+                }
+                h1, h2 {
+                    color: #333;
+                }
+                .tab {
+                    display: none;
+                }
+                .tab-button {
+                    background-color: #5d85ab;
+                    color: white;
+                    padding: 10px 20px;
+                    cursor: pointer;
+                    border: none;
+                    margin-right: 10px;
+                    font-size: 16px;
+                }
+                .tab-button:hover {
+                    background-color: #587795;
+                }
+                .active {
+                    background-color: #5d85ab;
+                }
+                .collapsible {
+                    background-color: #777;
+                    color: white;
+                    cursor: pointer;
+                    padding: 10px;
+                    width: 100%;
+                    border: none;
+                    text-align: left;
+                    outline: none;
+                    font-size: 15px;
+                    margin-bottom: 5px;
+                }
+                .content {
+                    padding: 0 18px;
+                    display: none;
+                    overflow: hidden;
+                    background-color: #f1f1f1;
+                    margin-bottom: 10px;
+                }
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+                table, th, td {
+                    border: 1px solid #ccc;
+                }
+                th, td {
+                    padding: 8px;
+                    text-align: left;
+                }
+                th {
+                    background-color: #f4f4f4;
+                }
+            </style>
+            <script>
+                function showTab(player) {
+                    var tabs = document.querySelectorAll('.tab');
+                    var buttons = document.querySelectorAll('.tab-button');
+                    
+                    // Masquer tous les onglets
+                    tabs.forEach(tab => tab.style.display = 'none');
+                    buttons.forEach(button => button.classList.remove('active'));
+        
+                    // Afficher l'onglet du joueur sélectionné
+                    document.getElementById(player).style.display = 'block';
+                    document.querySelector('[data-player="' + player + '"]').classList.add('active');
+                }
+        
+                document.addEventListener("DOMContentLoaded", function() {
+                    // Par défaut, on affiche le premier joueur
+                    var firstPlayer = document.querySelector('.tab-button');
+                    if (firstPlayer) {
+                        showTab(firstPlayer.getAttribute('data-player'));
+                    }
+                    
+                    const collapsibles = document.querySelectorAll(".collapsible");
+                    collapsibles.forEach(button => {
+                        button.addEventListener("click", () => {
+                            button.classList.toggle("active");
+                            const content = button.nextElementSibling;
+                            if (content.style.display === "block") {
+                                content.style.display = "none";
+                            } else {
+                                content.style.display = "block";
+                            }
+                        });
+                    });
+                });
+            </script>
+        </head>
+        <body>
+            <h1>Game Snapshot</h1>
+            <div>
+        <button class="tab-button" data-player="joueur_joueur_1" onclick="showTab('joueur_joueur_1')">Joueur joueur_1</button><button class="tab-button" data-player="joueur_joueur_2" onclick="showTab('joueur_joueur_2')">Joueur joueur_2</button><div id="joueur_joueur_2" class="tab"><h2>Ressources</h2><table><tr><th>Bois</th><th>Nourriture</th><th>Or</th><th>Population</th></tr><tr><td>6000</td><td>1150</td><td>1150</td><td>9</td></tr></table><h2>Unités</h2><table><tr><th>Type</th><th>Nombre</th></tr><tr><td>Villageois</td><td>8</td></tr><tr><td>Épéiste</td><td>0</td></tr><tr><td>Hallebardier</td><td>0</td></tr><tr><td>Archer</td><td>1</td></tr></table><h2>Bâtiments</h2><table><tr><th>Joueur</th><th>Type</th><th>ID</th><th>HP</th><th>Tuiles Occupées</th></tr><tr><td>joueur_2</td><td>T</td><td>T0</td><td>1000</td><td>(58,18), (58,19), (58,20), (58,21), (59,18), (59,19), (59,20), (59,21), (60,18), (60,19), (60,20), (60,21), (61,18), (61,20), (61,21)</td></tr><tr><td>joueur_2</td><td>T</td><td>T1</td><td>1000</td><td>(58,14), (58,15), (58,16), (58,17), (59,14), (59,15), (59,16), (59,17), (60,14), (60,15), (60,16), (60,17), (61,14), (61,16), (61,17)</td></tr><tr><td>joueur_2</td><td>H</td><td>H0</td><td>200</td><td>(56,18), (56,19), (57,19)</td></tr><tr><td>joueur_2</td><td>H</td><td>H1</td><td>200</td><td>(58,22), (58,23), (59,23)</td></tr><tr><td>joueur_2</td><td>B</td><td>B0</td><td>500</td><td>(58,24), (58,25), (58,26), (59,24), (59,25), (59,26), (60,24), (60,26)</td></tr><tr><td>joueur_2</td><td>B</td><td>B1</td><td>500</td><td>(55,15), (55,16), (55,17), (56,15), (56,16), (56,17), (57,15), (57,17)</td></tr><tr><td>joueur_2</td><td>S</td><td>S0</td><td>500</td><td>(55,21), (55,22), (55,23), (56,21), (56,22), (56,23), (57,21), (57,23)</td></tr><tr><td>joueur_2</td><td>S</td><td>S1</td><td>500</td><td>(52,18), (52,19), (52,20), (53,18), (53,19), (53,20), (54,18), (54,20)</td></tr><tr><td>joueur_2</td><td>A</td><td>A0</td><td>500</td><td>(58,9), (58,10), (58,11), (59,9), (59,10), (59,11), (60,9), (60,11)</td></tr></table><h2>Unités</h2><button class='collapsible'>Coordonnées : (62, 22)</button><div class='content'><table><tr><th>Joueur</th><th>Type</th><th>ID</th><th>HP</th></tr><tr><td>joueur_2</td><td>Villageois</td><td>0</td><td>25</td></tr><tr><td>joueur_2</td><td>Villageois</td><td>1</td><td>25</td></tr><tr><td>joueur_2</td><td>Villageois</td><td>2</td><td>25</td></tr><tr><td>joueur_2</td><td>Villageois</td><td>3</td><td>25</td></tr><tr><td>joueur_2</td><td>Villageois</td><td>4</td><td>25</td></tr><tr><td>joueur_2</td><td>Villageois</td><td>5</td><td>25</td></tr><tr><td>joueur_2</td><td>Villageois</td><td>6</td><td>25</td></tr><tr><td>joueur_2</td><td>Villageois</td><td>7</td><td>25</td></tr><tr><td>joueur_2</td><td>Archer</td><td>0</td><td>30</td></tr></table></div></div><div id="joueur_joueur_1" class="tab"><h2>Ressources</h2><table><tr><th>Bois</th><th>Nourriture</th><th>Or</th><th>Population</th></tr><tr><td>6000</td><td>1150</td><td>1150</td><td>9</td></tr></table><h2>Unités</h2><table><tr><th>Type</th><th>Nombre</th></tr><tr><td>Villageois</td><td>8</td></tr><tr><td>Épéiste</td><td>0</td></tr><tr><td>Hallebardier</td><td>0</td></tr><tr><td>Archer</td><td>1</td></tr></table><h2>Bâtiments</h2><table><tr><th>Joueur</th><th>Type</th><th>ID</th><th>HP</th><th>Tuiles Occupées</th></tr><tr><td>joueur_1</td><td>T</td><td>T0</td><td>1000</td><td>(58,98), (58,99), (58,100), (58,101), (59,98), (59,99), (59,100), (59,101), (60,98), (60,99), (60,100), (60,101), (61,98), (61,100), (61,101)</td></tr><tr><td>joueur_1</td><td>T</td><td>T1</td><td>1000</td><td>(58,94), (58,95), (58,96), (58,97), (59,94), (59,95), (59,96), (59,97), (60,94), (60,95), (60,96), (60,97), (61,94), (61,96), (61,97)</td></tr><tr><td>joueur_1</td><td>H</td><td>H0</td><td>200</td><td>(56,98), (56,99), (57,99)</td></tr><tr><td>joueur_1</td><td>H</td><td>H1</td><td>200</td><td>(58,102), (58,103), (59,103)</td></tr><tr><td>joueur_1</td><td>B</td><td>B0</td><td>500</td><td>(58,104), (58,105), (58,106), (59,104), (59,105), (59,106), (60,104), (60,106)</td></tr><tr><td>joueur_1</td><td>B</td><td>B1</td><td>500</td><td>(55,95), (55,96), (55,97), (56,95), (56,96), (56,97), (57,95), (57,97)</td></tr><tr><td>joueur_1</td><td>S</td><td>S0</td><td>500</td><td>(55,101), (55,102), (55,103), (56,101), (56,102), (56,103), (57,101), (57,103)</td></tr><tr><td>joueur_1</td><td>S</td><td>S1</td><td>500</td><td>(52,98), (52,99), (52,100), (53,98), (53,99), (53,100), (54,98), (54,100)</td></tr><tr><td>joueur_1</td><td>A</td><td>A0</td><td>500</td><td>(64,98), (64,99), (64,100), (65,98), (65,99), (65,100), (66,98), (66,100)</td></tr></table><h2>Unités</h2><button class='collapsible'>Coordonnées : (62, 102)</button><div class='content'><table><tr><th>Joueur</th><th>Type</th><th>ID</th><th>HP</th></tr><tr><td>joueur_1</td><td>Villageois</td><td>0</td><td>25</td></tr><tr><td>joueur_1</td><td>Villageois</td><td>1</td><td>25</td></tr><tr><td>joueur_1</td><td>Villageois</td><td>2</td><td>25</td></tr><tr><td>joueur_1</td><td>Villageois</td><td>3</td><td>25</td></tr><tr><td>joueur_1</td><td>Villageois</td><td>4</td><td>25</td></tr><tr><td>joueur_1</td><td>Villageois</td><td>5</td><td>25</td></tr><tr><td>joueur_1</td><td>Villageois</td><td>6</td><td>25</td></tr><tr><td>joueur_1</td><td>Villageois</td><td>7</td><td>25</td></tr><tr><td>joueur_1</td><td>Archer</td><td>0</td><td>30</td></tr></table></div></div>
+            </body>
+            </html>
+            
