@@ -143,6 +143,7 @@ class Initialisation_Compteur:
                     max_value = compteurs['ressources']['max_pop'] if type == "U" else None
                     barre.draw(DISPLAYSURF, x_barre, y_barre, compteurs['ressources'][type], i, total_images, max_value)
 
+
             if self.f2_active:
                 for barre_unit in self.barres:
                     barre_unit.barre_units(DISPLAYSURF, x_barre, y_barre + barre_height)
