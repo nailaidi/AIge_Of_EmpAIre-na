@@ -637,7 +637,7 @@ class Game:
                     self.unit.creation_unite('v', 'joueur_1')
                     self.unit.creation_unite('h', 'joueur_1')
                     self.unit.creation_unite('s', 'joueur_1')
-
+                    
                 if event.type == KEYDOWN and event.key == K_g:
                     position_a = None
                     joueur_a = 'joueur_2'

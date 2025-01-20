@@ -106,6 +106,8 @@ class Initialisation_Compteur:
                 compteurs['batiments']['S'] = 0        # Pas de stable
                 compteurs['batiments']['A'] = 0        # Pas d'archery range
 
+
+
             elif unit == "Marines":
                 compteurs['ressources']['W'] = 20000  # 20000 bois (W)
                 compteurs['ressources']['F'] = 20000  # 20000 nourriture (F)
