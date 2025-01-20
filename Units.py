@@ -129,10 +129,6 @@ class Unit:
             new_y = start_y + (target_y - start_y) * progress
             self.position = (new_x, new_y)
 
-
-
-
-
     def animation(self, current_time):  # fonction qui modifie l'indice des frames et le dernier temps du frame
         if current_time - self.last_time > 1000 // 30:  # 1000//30: 30 frames par 1000 millisecondes
             self.last_time = current_time

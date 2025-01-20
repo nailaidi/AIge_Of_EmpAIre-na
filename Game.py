@@ -544,6 +544,9 @@ class Game:
 
             elif key == ord('t'):
                 self.ouvrir_terminal()
+            elif key == ord(' '):
+                self.sauvegarde_manager.sauvegarder_jeu(self.tuiles, self.compteurs_unites)  # Appeler la sauvegarde
+
 
             time.sleep(0.1)  # Pause pour éviter d'utiliser trop de CPU
 
